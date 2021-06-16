@@ -1,0 +1,81 @@
+<div class="wrapper">
+  <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+      <div class="container">
+          <div class="row no-gutters justify-content-center">
+            <div class="col-md-6">
+              <div class="card-body">
+                <form [formGroup]="userForm" align="center">
+                  <h3>SIGN UP</h3>
+                  <div class="form-group">
+                                <label for="firstname" class="sr-only">FirstName</label>
+                                <input type="text" formControlName="firstname" placeholder="FirstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+                                <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                                    <div *ngIf="f.firstname.errors.required">FirstName is required</div>
+                                </div>                  
+                            </div>
+                              <div class="form-group mb-4">
+                                <label for="lastname" class="sr-only">LastName</label>
+                                <input type="lastname"formControlName="lastname" placeholder="LastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />                
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="username" class="sr-only">LoginId</label>
+                                <input type="text"formControlName="username" placeholder="LoginId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                    <div *ngIf="f.username.errors.required"> is required</div>
+                                </div>                  
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="contactnumber" class="sr-only">ContactNumber</label>
+                                <input type="text"formControlName="contactnumber" placeholder="ContactNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contactnumber.errors }" />
+                                <div *ngIf="submitted && f.contactnumber.errors" class="invalid-feedback">
+                                    <div *ngIf="f.contactnumber.errors.required">Gender is required</div>
+                                </div>                  
+                            </div>
+                            <div class="form-group">
+                                <label for="emailid" class="sr-only">Emailid</label>
+                                <input type="text" formControlName="emailid" placeholder="Email address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.emailid.errors }" />
+                                <div *ngIf="submitted && f.emailid.errors" class="invalid-feedback">
+                                    <div *ngIf="f.emailid.errors.required">Emailid is required</div>
+                                </div>                  
+                            </div>
+                              <div class="form-group mb-4">
+                                <label for="password" class="sr-only">Password</label>
+                                <input type="password"formControlName="password" placeholder="********" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                <div *ngIf="submitted && f.password.errors" class="alert alert-danger">
+                                    <div *ngIf="f.password.errors.required">
+                                      Password is required
+                                    </div>
+                                  </div>                 
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="confirmpassword" class="sr-only">ConfirmPassword</label>
+                                <input type="password" formControlName="confirmpassword" placeholder="********" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" />
+                                <div *ngIf="submitted && f.confirmpassword.errors" class="alert alert-danger">
+                                    <div *ngIf="f.confirmpassword.errors.required">
+                                      Confirm Password is required
+                                    </div>
+                                      <div *ngIf="f.confirmpassword.errors.confirmPasswordValidator">
+                                        Passsword and Confirm Password didn't match.
+                                      </div>                    
+                                  </div>                
+                            </div>
+                            <div class="form-group mb-4">
+                                <label>ProfilePic</label>
+                                <input type="file" formControlName="imagename" name="imagename"  (change)="fileEvent($event)" />                
+                            </div>
+                              <input name="login" id="login" class="btn btn-primary btn-block login-btn mb-4" type="submit" value="REGISTER" (click)="onSubmitUser()">
+                        </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  </main>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-23581568-13');
+</script>

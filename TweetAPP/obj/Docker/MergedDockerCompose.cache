@@ -1,0 +1,13 @@
+services:
+  tweetapp:
+    build:
+      context: C:\Users\User\source\sri\UseCaseComponent3-TweetApp\TweetAPP
+      dockerfile: TweetAPP\Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: tweetapp
+    ports:
+    - target: 80
+    volumes:
+    - C:\Users\User\AppData\Roaming\Microsoft\UserSecrets:C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets:ro
+version: '3.4'

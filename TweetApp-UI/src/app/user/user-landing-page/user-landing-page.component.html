@@ -1,0 +1,100 @@
+<div id="wrapper" class="animate">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-5 shadow">
+      <div class="container">
+        <a class="navbar-brand"><img src="..\assets\images\Logo.jpg" height="30px" width="40px" style="border :none;"></a>
+        <form [formGroup] = "form" class="form-inline my-2 my-lg-0"> 
+          <input id="search" class="form-control mr-sm-2" formControlName = "username" class="form-control" type="text" placeholder="Search"> 
+          <button type="submit" class="btn btn-default" (click)= "Search()"><i class="fa fa-search"></i></button> 
+        </form>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" [routerLink]="'/USER'" routerLinkActive="router-link-active"><i class="fa fa-home"></i>Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" style="color: darkgray;">
+                                <i class="fa fa-user"></i> Me
+                            </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" [routerLink]="'/CHANGEPASSWORD'" routerLinkActive="router-link-active"><i class="fa fa-cog"></i> Settings and Privacy</a>
+                    <a class="dropdown-item" [routerLink]="'/VIEW PROFILE'" routerLinkActive="router-link-active"><i class="fa fa-user"></i> Profile</a>
+                    <a class="dropdown-item" [routerLink]="'/HOME'" routerLinkActive="router-link-active" (click)="Logout()"><i class="fa fa-sign-out"></i> LogOut</a>
+                </div>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br><br><br>
+    <div class="container-fluid gedf-wrapper">
+      <div class="row">
+          <div class="col-md-3">
+                  <!--Home page Profile -->
+<div class="card gedf-card">
+    <div class="card-header" style="background-color: rgb(84, 174, 235);height: 60px;"></div>
+    <div class="card-body">
+        <div class="center" style="text-align: center;">
+          <a class="card-link">
+              <img class="img-center" src="../assets/images/{{user.imageName}}" text-align="center"/>
+              <h5 class="card-title" text-align="center">{{user.username}}</h5>
+          </a>
+          <div class="card-text">
+            <a class="card-link" [routerLink]="'/VIEW PROFILE'" routerLinkActive="router-link-active">See Your Profile</a><br>
+            <button class="btn btn-default" (click)=" isSeeMoreClicked(1)">-</button>
+            <div *ngIf="clickedMoreButton[1]">
+               <p class="card-text"> 
+                   {{user.firstName}}
+                   {{user.lastName}}
+                {{user.emailId}}
+                {{user.contactNumber}}
+                </p>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+          </div>
+          <div class="col-md-6 gedf-main">
+  
+              <!--- \\\\\\\Post-->
+              <app-posttweet></app-posttweet>
+              <!-- Post /////-->
+              <app-viewtweets></app-viewtweets>
+          </div>
+          <div class="col-md-3">
+            <div class="card gedf-card">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">People</h6>
+                    <div *ngFor="let items of list;index as i">  
+                      <div *ngIf="i<6">
+                      <div><img class="card-img-top" src="/assets/images/{{items.imageName}}" style="height:40px; width:45px;">
+                       <button class="btn btn-default" (click)="SearchUser(items)"> {{items.username}}</button></div>
+                       <div> {{items.emailId}}</div>
+                       &nbsp;
+                       </div>
+                  </div>
+                  
+                    <button class="btn btn-default" (click)="isSeeMoreClicked(6)"> See More...</button>
+                    <div *ngIf="clickedMoreButton[6]">
+                    <div *ngFor="let items of list;index as i">  
+                      <div *ngIf="i>=6">
+                      <div><img class="card-img-top" src="/assets/images/{{items.imageName}}" style="height:40px; width:45px;">
+                        <button class="btn btn-default" (click)="SearchUser(items)"> {{items.username}}</button></div>
+                       <div> {{items.emailId}}</div>
+                       &nbsp;
+                       </div>
+                      </div>
+                </div>
+            </div>
+      </div>
+  </div>
+  
+  <router-outlet></router-outlet>
+  
